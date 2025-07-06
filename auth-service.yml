@@ -28,4 +28,4 @@ bytebites:
   oauth2:
     google:
       client-id: your-google-client-id
-      client-secret: your-google-client-secretInitialize with: git init && git add . && git commit -m "Initial config"
+      client-secret: your-google-client-secret
