@@ -1,0 +1,53 @@
+server:
+  port: 8084
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5435/notification_db
+    username: mrlii
+    password: postgresdev
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.bytebites.notification.event,com.bytebites.order.event,com.bytebites.restaurant.event"
+        auto.offset.reset: earliest
+        enable.auto.commit: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+
+bytebites:
+  kafka:
+    topics:
+      order-events: order-events
+      restaurant-events: restaurant-events
+
+  email:
+    enabled: false
+    from: ""
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
