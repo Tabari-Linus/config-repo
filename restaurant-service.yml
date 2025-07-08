@@ -28,6 +28,17 @@ spring:
     baseline-on-migrate: true
     enabled: true
 
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        acks: all
+        retries: 3
+        enable.idempotence: true
+
+
 eureka:
   client:
     service-url:
@@ -36,6 +47,12 @@ eureka:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 30
     lease-expiration-duration-in-seconds: 90
+
+
+bytebites:
+  kafka:
+    topics:
+      restaurant-events: restaurant-events
 
 management:
   endpoints:
