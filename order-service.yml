@@ -29,9 +29,9 @@ bytebites:
       url: lb://restaurant-service
       timeout: 5000
 
-  events:
-    order:
-      topic: order-events
+  kafka:
+    topics:
+      order-events: order-events
 
 management:
   endpoints:
