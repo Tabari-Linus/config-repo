@@ -23,14 +23,14 @@ spring:
           filters:
             - name: JwtAuthenticationFilter
               
-        - id: admin-service
-          uri: lb://auth-service
-          predicates:
-            - Path=/admin/**
-          filters:
-            - name: JwtAuthenticationFilter
-              args:
-                requiredRole: ROLE_ADMIN
+#        - id: admin-service
+#          uri: lb://auth-service
+#          predicates:
+#            - Path=/admin/**
+#          filters:
+#            - name: JwtAuthenticationFilter
+#              args:
+#                requiredRole: ROLE_ADMIN
 
         - id: restaurant-service
           uri: lb://restaurant-service
