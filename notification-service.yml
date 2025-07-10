@@ -45,9 +45,3 @@ bytebites:
   email:
     enabled: false
     from: ""
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
