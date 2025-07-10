@@ -10,9 +10,9 @@ spring:
 
 
   datasource:
-    url: jdbc:postgresql://localhost:5433/restaurant_db
-    username: mrlii
-    password: postgresdev
+    url: jdbc:postgresql://localhost:5433/${restaurant_db_name}
+    username: ${db_username}
+    password: ${db_password}
     driver-class-name: org.postgresql.Driver
 
   jpa:
